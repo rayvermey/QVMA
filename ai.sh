@@ -95,7 +95,8 @@ systemctl enable --now NetworkManager
 systemctl enable --now lightdm
 
 echo Adding user Ray
-useradd -G autlogin, wheel,power -m ray
+groupadd -r autologin
+useradd -G autologin,wheel,power -m ray
 echo "ray:qazwsx12" | chpasswd
 cat <<SU >> /etc/sudoers
 ## Same thing without a password
