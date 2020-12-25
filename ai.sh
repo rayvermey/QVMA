@@ -94,4 +94,11 @@ pacman -S alsa-utils alsa-plugins alsa-lib pavucontrol --noconfirm --needed
 systemctl enable --now NetworkManager
 systemctl enable --now lightdm
 
+echo Adding user Ray
+useradd -G autlogin, wheel,power -m ray
+echo "ray:qazwsx12" | chpasswd
+cat <<SU >> /etc/sudoers
+## Same thing without a password
+ray ALL=(ALL) NOPASSWD: ALL
+SU
 EOF
